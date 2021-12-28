@@ -1,6 +1,7 @@
 const express = require('express');
 require('dotenv').config();
 const routes = require('./routes/auth');
+const routeEvent=require('./routes/events');
 const {dbConnection}=require('./database/config');
 const cors=require('cors');
 
@@ -19,7 +20,8 @@ app.use( express.static('public'));
 app.use(express.json())
 
 //Rutas
-app.use('/api/auth',routes)
+app.use('/api/auth',routes),
+app.use('/api/event',routeEvent);
 
 //Escuchar peticiones
 app.listen(process.env.PORT,()=>{
